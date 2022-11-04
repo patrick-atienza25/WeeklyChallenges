@@ -7,12 +7,8 @@ namespace ChallengesWithTestsMark8
     {
         public bool CharacterIsALetter(char c)
         {
-            //throw new NotImplementedException();
-            bool isCharacter;
-            if (c = isCharacter)
-            {
-                return c;
-            }
+            throw new NotImplementedException();
+
         }
 
         public bool CountOfElementsIsEven(string[] vals)
@@ -22,7 +18,7 @@ namespace ChallengesWithTestsMark8
 
         public bool IsNumberEven(int number)
         {
-            throw new NotImplementedException();
+            return number % 2 == 0;
         }
 
         public bool IsNumberOdd(int num)
