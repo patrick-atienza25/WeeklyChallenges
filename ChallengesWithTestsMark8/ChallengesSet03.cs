@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,18 +41,22 @@ namespace ChallengesWithTestsMark8
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            //throw new NotImplementedException();
-            if(password.Contains('')
+            if (password.Any(char.IsUpper) && password.Any(char.IsLower) && password.Any(char.IsDigit))
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         public char GetFirstLetterOfString(string val)
         {
-            throw new NotImplementedException();
+            return val.First();
         }
 
         public char GetLastLetterOfString(string val)
         {
-            throw new NotImplementedException();
+            return val.Last();
         }
 
         public decimal Divide(decimal dividend, decimal divisor)
@@ -66,17 +71,32 @@ namespace ChallengesWithTestsMark8
 
         public int LastMinusFirst(int[] nums)
         {
-            throw new NotImplementedException();
+            return nums.Last() - nums.First();
         }
 
         public int[] GetOddsBelow100()
         {
-            throw new NotImplementedException();
+            var oddsList = new List<int>();
+            for (int i = 0; i <= 100; i++)
+            {
+                if(i % 2 != 0)
+                {
+                    oddsList.Add(i);
+                }
+            }
+            return oddsList.ToArray();
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-            throw new NotImplementedException();
+            var allCaps = new List<string>();
+            foreach (string word in words)
+            {
+                if (words != null)
+                {
+                    allCaps.Add(words.ToString().ToUpper());
+                }
+            }
         }
     }
 }
