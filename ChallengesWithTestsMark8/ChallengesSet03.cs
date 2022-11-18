@@ -10,9 +10,7 @@ namespace ChallengesWithTestsMark8
         public bool ArrayContainsAFalse(bool[] vals)
         {
             if(vals.Contains(false))
-            {
                 return true;
-            }
             else
                 return false;
         }
@@ -32,9 +30,7 @@ namespace ChallengesWithTestsMark8
             
             }
             if (odds.Sum() % 2 != 0)
-            {
                 return true;
-            }
             else
                 return false;
         }
@@ -42,9 +38,7 @@ namespace ChallengesWithTestsMark8
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
             if (password.Any(char.IsUpper) && password.Any(char.IsLower) && password.Any(char.IsDigit))
-            {
                 return true;
-            }
             else
                 return false;
         }
@@ -62,11 +56,9 @@ namespace ChallengesWithTestsMark8
         public decimal Divide(decimal dividend, decimal divisor)
         {
             if(dividend == 0 || divisor == 0)
-            {
                 return 0;
-            }
             else
-            return dividend / divisor;
+                return dividend / divisor;
         }
 
         public int LastMinusFirst(int[] nums)
@@ -89,13 +81,9 @@ namespace ChallengesWithTestsMark8
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-            var allCaps = new List<string>();
-            foreach (string word in words)
+            for (int i = 0; i < words.Length; i++)
             {
-                if (words != null)
-                {
-                    allCaps.Add(words.ToString().ToUpper());
-                }
+                words[i] = words[i].ToUpper();
             }
         }
     }
