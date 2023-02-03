@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 
 namespace ChallengesWithTestsMark8
@@ -9,36 +9,50 @@ namespace ChallengesWithTestsMark8
     {
         public bool ArrayContainsAFalse(bool[] vals)
         {
-            if(vals.Contains(false))
-                return true;
-            else
-                return false;
+            return vals.Contains(false);
         }
 
         public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
         {
-            var odds = new List<int>();
-            if(numbers != null)
+            int total = 0;
+            if(numbers == null)
             {
-                foreach (var num in numbers)
-                {
-                    if (num % 2 != 0)
-                    {
-                        odds.Add(num);
-                    }
-                }
-            
-            }
-            if (odds.Sum() % 2 != 0)
-                return true;
-            else
                 return false;
+            }
+            foreach (var num in numbers)
+            {
+                total += num;
+            }
+
+            return total % 2 != 0;
         }
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            if (password.Any(char.IsUpper) && password.Any(char.IsLower) && password.Any(char.IsDigit))
+            var isLower = false;
+            var isUpper = false;
+            var isNumber = false;
+
+            for (int i = 0; i < password.Length; i++)
+            {
+                if (char.IsLower(password[i]))
+                {
+                    isLower = true;
+                }
+                if (char.IsUpper(password[i]))
+                {
+                    isUpper = true;
+                }
+                if (char.IsDigit(password[i]))
+                {
+                    isNumber = true;
+                }
+            }
+
+            if(isLower == true && isUpper == true && isNumber == true)
+            {
                 return true;
+            }
             else
                 return false;
         }
@@ -55,10 +69,7 @@ namespace ChallengesWithTestsMark8
 
         public decimal Divide(decimal dividend, decimal divisor)
         {
-            if(dividend == 0 || divisor == 0)
-                return 0;
-            else
-                return dividend / divisor;
+            return dividend == 0 || divisor == 0 ? 0 : dividend / divisor;
         }
 
         public int LastMinusFirst(int[] nums)
@@ -68,15 +79,16 @@ namespace ChallengesWithTestsMark8
 
         public int[] GetOddsBelow100()
         {
-            var oddsList = new List<int>();
-            for (int i = 0; i <= 100; i++)
+            List<int> odds = new List<int>();
+
+            for (int i = 0; i < 100; i++)
             {
                 if(i % 2 != 0)
                 {
-                    oddsList.Add(i);
+                    odds.Add(i);
                 }
             }
-            return oddsList.ToArray();
+            return odds.ToArray();
         }
 
         public void ChangeAllElementsToUppercase(string[] words)

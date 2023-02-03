@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Net.Security;
 
 namespace ChallengesWithTestsMark8
 {
@@ -20,7 +18,7 @@ namespace ChallengesWithTestsMark8
 
         public double Subtract(double minuend, double subtrahend)
         {
-            return minuend - subtrahend;
+            return minuend- subtrahend;
         }
 
         public int Add(int number1, int number2)
@@ -30,24 +28,27 @@ namespace ChallengesWithTestsMark8
 
         public int GetSmallestNumber(int number1, int number2)
         {
-            return Math.Min(number1, number2);
+            if (number1 > number2)
+            {
+                return number2;
+            }
+            else
+                return number1;
         }
 
         public long Multiply(long factor1, long factor2)
         {
-            return factor1 * factor2;
+            return factor1* factor2;
         }
 
         public string GetGreeting(string nameOfPerson)
         {
-            if (nameOfPerson == "")
+            if (nameOfPerson == null || nameOfPerson == "")
             {
                 return "Hello!";
             }
             else
-            {
                 return $"Hello, {nameOfPerson}!";
-            }
         }
 
         public string GetHey()
