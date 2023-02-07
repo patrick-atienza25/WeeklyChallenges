@@ -8,10 +8,7 @@ namespace ChallengesWithTestsMark8
     {
         public bool CollectionContainsWord(IEnumerable<string> words, string word, bool ignoreCase)
         {
-            //throw new NotImplementedException();
-
-            if(words.Contains(word)) 
-                return true;
+            return (ignoreCase) ? words?.Select(x => x?.ToLower()).Contains(word) ?? false : words?.Contains(word) ?? false;
         }
 
         public bool IsPrimeNumber(int num)
@@ -36,19 +33,72 @@ namespace ChallengesWithTestsMark8
 
         public int IndexOfLastUniqueLetter(string str)
         {
-            throw new NotImplementedException();
-            //int indexCounter = 0;
-            //s
+            int index = -1;
+
+            bool uniqueIndex;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                uniqueIndex = true;
+
+                for (int k = 0; k < str.Length; k++)
+                {
+                    if (str[i] == str[k] && i != k)
+                    {
+                        uniqueIndex = false;
+                    }
+                }
+
+                if(uniqueIndex == true)
+                {
+                    index = i;
+                }
+            }
+
+            return index;
         }
 
         public int MaxConsecutiveCount(int[] numbers)
         {
-            throw new NotImplementedException();
+            int count = 0;
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                int currentCount = 1;
+
+                for (int j = i + 1; j < numbers.Length; j++)
+                {
+                    if (numbers[i] != numbers[j])
+                    {
+                        break;
+                    }
+
+                    currentCount++;
+                }
+
+                if(currentCount > count)
+                {
+                    count = currentCount;
+                }
+            }
+            return count;
         }
 
         public double[] GetEveryNthElement(List<double> elements, int n)
         {
-            throw new NotImplementedException();
+            List<double> elementList = new List<double>();
+
+            if(elements == null || n <= 0 || n > elements.Count)
+            {
+                return elementList.ToArray();
+            }
+
+            for (int i = n - 1; i < elements.Count; i+=n)
+            {
+                elementList.Add(elements[i]);
+            }
+
+            return elementList.ToArray();
         }
     }
 }
